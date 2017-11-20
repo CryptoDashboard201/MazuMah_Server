@@ -1,0 +1,13 @@
+models\Price.class
+models\Update.class
+authentication\AuthData.class
+schemas\Mutation.class
+endpoint\GraphQLEndpoint.class
+models\User.class
+resolvers\SigninResolver.class
+authentication\SigninPayload.class
+utilities\JDBC.class
+errors\SanitizedError.class
+repositories\UserRepository.class
+schemas\Query.class
+authentication\AuthContext.class

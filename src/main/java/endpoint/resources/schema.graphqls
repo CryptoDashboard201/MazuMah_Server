@@ -2,7 +2,6 @@ type User {
 	id: ID!
 	username: String!
 	password: String!
-	notifyPrice: Float!
 }
 
 input AuthData {
@@ -10,32 +9,19 @@ input AuthData {
 	password: String!
 }
 
-type Price {
-	currentPrice : Float!
-	highestPrice : Float!
-	lowestPrice : Float!
-}
-
 type SigninPayload {
 	token: String
 	user: User
 }
 
-type Update {
-	highlight: Int!
-}
-
 type Query {
 	allUsers: [User]
 	getUserById(id: String!): User
-	getPrice: Price
 }
 
 type Mutation {
 	createUser(authProvider: AuthData!): User
 	signinUser(auth: AuthData) : SigninPayload
-	updateNotificationPrice(id: String!, notifyPrice: Float!) : User 
-	comparePrice(id:String!) : Update
 }
 
 schema {

@@ -5,8 +5,11 @@ import com.coxautodev.graphql.tools.GraphQLRootResolver;
 import authentication.AuthData;
 import authentication.SigninPayload;
 import graphql.GraphQLException;
+import models.Update;
 import models.User;
+import utilities.JDBC;
 import repositories.UserRepository;
+
 
 public class Mutation implements GraphQLRootResolver {
 	private final UserRepository userRepository;
@@ -28,4 +31,17 @@ public class Mutation implements GraphQLRootResolver {
 		}
 		throw new GraphQLException("Either username or password is incorrect");
  	}
+	
+	public User updateNotificationPrice(String id, double notifyPrice) {	
+		userRepository.updateNotifyPriceById(Integer.parseInt(id), notifyPrice);
+		User user = userRepository.findById(id);
+		System.out.println(user.getNotifyPrice());
+		return user;
+	}
+	
+	public Update comparePrice(String id) {
+		return new Update(userRepository.comparePrice(id));
+
+	}
+
 }
